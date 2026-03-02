@@ -28,8 +28,8 @@
     },
     "body": {
       "family": "TWK Lausanne",
-      "weight": 250,
-      "source": "/fonts/TWKLausanne-250.woff2",
+      "weight": 400,
+      "source": "/fonts/TWKLausanne-400.woff2",
       "format": "woff2"
     }
   },
