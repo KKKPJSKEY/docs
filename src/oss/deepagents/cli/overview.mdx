@@ -464,7 +464,7 @@ The additional files will not be read on startup but the agent can reference and
 
 ## Use remote sandboxes
 
-Execute code in isolated remote environments for safety and flexibility. The agent runs locally but executes all code operations in the remote sandbox.
+The CLI uses the [sandbox as tool](/oss/deepagents/sandboxes#sandbox-as-tool-pattern) pattern: the CLI process (LLM loop, memory, tool dispatch) runs on your machine, but agent tool calls (`read_file`, `write_file`, `execute`, etc.) target the remote sandbox, not your local filesystem. To get files into the sandbox, use a [setup script](#setup-scripts) or the provider's file transfer APIs (see [Working with files](/oss/deepagents/sandboxes#working-with-files)).
 
 For a deeper look at sandbox architecture, integration patterns, and security best practices, see [Sandboxes](/oss/deepagents/sandboxes).
 
