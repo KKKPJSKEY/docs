@@ -1,0 +1,49 @@
+---
+title: "Pandas integrations"
+description: "Integrate with Pandas using LangChain Python."
+---
+
+>[pandas](https://pandas.pydata.org) is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool,
+built on top of the `Python` programming language.
+
+## Installation and setup
+
+Install the `pandas` package using `pip`:
+
+<CodeGroup>
+```bash pip
+pip install pandas
+```
+
+```bash uv
+uv add pandas
+```
+</CodeGroup>
+
+
+## Document loader
+
+See a [usage example](/oss/python/integrations/document_loaders/pandas_dataframe).
+
+```python
+from langchain_community.document_loaders import DataFrameLoader
+```
+
+## Toolkit
+
+See a [usage example](/oss/python/integrations/tools/pandas).
+
+```python
+from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
+```
+
+---
+
+<div className="source-links">
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/providers/pandas.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
+</Callout>
+<Callout icon="terminal-2">
+    [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+</div>
