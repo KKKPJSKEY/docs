@@ -132,7 +132,7 @@ Note that the components will operate on the [`MessagesState`](/oss/python/langg
   from langgraph.graph import MessagesState
   from langchain.chat_models import init_chat_model
 
-  response_model = init_chat_model("gpt-4.1", temperature=0)
+  response_model = init_chat_model("gpt-5.4", temperature=0)
 
 
   def generate_query_or_respond(state: MessagesState):
@@ -205,7 +205,7 @@ Note that the components will operate on the [`MessagesState`](/oss/python/langg
       )
 
 
-  grader_model = init_chat_model("gpt-4.1", temperature=0)
+  grader_model = init_chat_model("gpt-5.4", temperature=0)
 
 
   def grade_documents(
@@ -542,10 +542,10 @@ Lilian Weng categorizes reward hacking into two types: environment or goal missp
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/agentic-rag.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/agentic-rag.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

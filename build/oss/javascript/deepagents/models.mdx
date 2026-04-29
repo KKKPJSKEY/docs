@@ -3,6 +3,8 @@ title: Models
 description: Configure model providers and parameters for Deep Agents
 ---
 
+import EvalCategoryMatrix from '/snippets/deepagents-eval-category-matrix.mdx';
+
 Deep Agents work with any [LangChain chat model](/oss/javascript/langchain/models) that supports [tool calling](/oss/javascript/langchain/models#tool-calling).
 
 ## Supported models
@@ -16,7 +18,7 @@ These models perform well on the [Deep Agents eval suite](https://github.com/lan
 | Provider | Models |
 |----------|--------|
 | [Google](/oss/javascript/integrations/providers/google) | `gemini-3.1-pro-preview`, `gemini-3-flash-preview` |
-| [OpenAI](/oss/javascript/integrations/providers/openai) | `gpt-5.4`, `gpt-4o`, `gpt-4.1`, `o4-mini`, `gpt-5.2-codex`, `gpt-4o-mini`, `o3` |
+| [OpenAI](/oss/javascript/integrations/providers/openai) | `gpt-5.4`, `gpt-4o`, `gpt-5.4`, `o4-mini`, `gpt-5.2-codex`, `gpt-4o-mini`, `o3` |
 | [Anthropic](/oss/javascript/integrations/providers/anthropic) | `claude-opus-4-6`, `claude-opus-4-5`, `claude-sonnet-4-6`, `claude-sonnet-4`, `claude-sonnet-4-5`, `claude-haiku-4-5`, `claude-opus-4-1` |
 | Open-weight | `GLM-5`, `Kimi-K2.5`, `MiniMax-M2.5`, `qwen3.5-397B-A17B`, `devstral-2-123B` |
 
@@ -61,8 +63,40 @@ To configure model-specific parameters, use [`init_chat_model`](https://referenc
 
 
 <Note>
-  Available parameters vary by provider. See the [chat model integrations](/oss/javascript/integrations/chat) page for provider-specific configuration options.
+    Available parameters vary by provider. See the [chat model integrations](/oss/javascript/integrations/chat) page for provider-specific configuration options.
 </Note>
+
+### Provider profiles
+
+A [`ProviderProfile`](/oss/javascript/deepagents/profiles#provider-profiles) packages initialization parameters that apply when you provide a `provider:model` string when creating the deep agent. It does not apply when you pass a preconfigured model with [`init_chat_model`](https://reference.langchain.com/javascript/langchain/chat_models/universal/initChatModel).
+
+You can register at two levels, and both can coexist:
+
+- **Provider level** — a bare provider key like `"openai"` applies to every model from the `openai` provider.
+- **Model level** — a `provider:model` key like `"openai:gpt-5.4"` applies only to that specific model, and merges on top of any matching provider-level profile.
+
+```python
+from deepagents import ProviderProfile, register_provider_profile
+
+# Provider-wide default: every openai model gets temperature=0.
+register_provider_profile(
+    "openai",
+    ProviderProfile(init_kwargs={"temperature": 0}),
+)
+
+# Model-level override: gpt-5.4 additionally gets a specific reasoning effort.
+# Inherits temperature=0 from the provider-level profile above.
+register_provider_profile(
+    "openai:gpt-5.4",
+    ProviderProfile(init_kwargs={"reasoning_effort": "medium"}),
+)
+```
+
+See [Profiles](/oss/javascript/deepagents/profiles) for the full field list, merge semantics, and plugin packaging.
+
+<Tip>
+    For shaping how the *agent* behaves once the model is built, use a [harness profile](/oss/javascript/deepagents/profiles#harness-profiles).
+</Tip>
 
 ## Select a model at runtime
 
@@ -113,10 +147,10 @@ const result = await agent.invoke(
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/models.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/models.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

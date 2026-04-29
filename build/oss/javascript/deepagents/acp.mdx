@@ -2,6 +2,7 @@
 title: Agent Client Protocol (ACP)
 description: Expose Deep Agents over the Agent Client Protocol (ACP) to integrate with code editors and IDEs.
 ---
+
 [Agent Client Protocol (ACP)](https://agentclientprotocol.com/get-started/introduction) standardizes communication between coding agents and code editors or IDEs.
 With the ACP protocol, you can make use of your custom deep agents with any ACP-compatible client, allowing your code editor to provide project context and receive rich updates.
 
@@ -30,7 +31,7 @@ pnpm add deepagents-acp
 </CodeGroup>
 
 
-Then expose a Deep Agent over ACP.
+Then expose a deep agent over ACP.
 
 This starts an ACP server in stdio mode (it reads requests from stdin and writes responses to stdout). In practice, you usually run this as a command launched by an ACP client (for example, your editor), which then communicates with the server over stdio.
 
@@ -65,7 +66,7 @@ npx deepagents-acp
 
 ## Clients
 
-Deep Agents works anywhere you can run an ACP agent server. Some notable ACP clients include:
+Deep agents work anywhere you can run an ACP agent server. Some notable ACP clients include:
 
 - [Zed](https://zed.dev/docs/ai/external-agents)
 - [JetBrains IDEs](https://www.jetbrains.com/help/ai-assistant/acp.html)
@@ -411,10 +412,10 @@ await startServer({
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/acp.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/acp.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

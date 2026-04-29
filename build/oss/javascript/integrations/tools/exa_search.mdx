@@ -118,7 +118,7 @@ We can use our tool in a chain by first binding it to a [tool-calling model](/os
 import { ChatOpenAI } from "@langchain/openai"
 
 const llm = new ChatOpenAI({
-  model: "gpt-4.1-mini",
+  model: "gpt-5.4-mini",
 })
 ```
 
@@ -204,7 +204,7 @@ Then, define the LLM to use with the agent
 import { ChatOpenAI } from "@langchain/openai";
 
 const llmForAgent = new ChatOpenAI({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   temperature: 0
 })
 ```
@@ -305,10 +305,10 @@ For detailed documentation of all `ExaSearchResults` features and configurations
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/javascript/integrations/tools/exa_search.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/javascript/integrations/tools/exa_search.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

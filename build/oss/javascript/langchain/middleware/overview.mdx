@@ -22,7 +22,7 @@ import {
 } from "langchain";
 
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   tools: [...],
   middleware: [summarizationMiddleware, humanInTheLoopMiddleware],
 });
@@ -72,10 +72,10 @@ Middleware exposes hooks before and after each of those steps:
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/middleware/overview.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/middleware/overview.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

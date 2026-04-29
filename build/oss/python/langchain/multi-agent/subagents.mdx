@@ -15,8 +15,8 @@ graph LR
     E --> B
     B --> F[User response]
 
-    classDef trigger fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
-    classDef process fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A8A
+    classDef trigger fill:#F6FFDB,stroke:#6E8900,stroke-width:2px,color:#2E3900
+    classDef process fill:#E5F4FF,stroke:#006DDD,stroke-width:2px,color:#030710
 
     class A,F trigger
     class B,C,D,E process
@@ -50,7 +50,7 @@ from langchain.tools import tool
 from langchain.agents import create_agent
 
 # Create a subagent
-subagent = create_agent(model="anthropic:claude-sonnet-4-20250514", tools=[...])
+subagent = create_agent(model="google_genai:gemini-3.1-pro-preview", tools=[...])
 
 # Wrap it as a tool
 @tool("research", description="Research a topic and return findings")
@@ -59,7 +59,7 @@ def call_research_agent(query: str):
     return result["messages"][-1].content
 
 # Main agent with subagent as a tool
-main_agent = create_agent(model="anthropic:claude-sonnet-4-20250514", tools=[call_research_agent])
+main_agent = create_agent(model="google_genai:gemini-3.1-pro-preview", tools=[call_research_agent])
 ```
 
 
@@ -193,8 +193,8 @@ graph LR
     E --> B
     B --> F[User response]
 
-    classDef trigger fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
-    classDef process fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A8A
+    classDef trigger fill:#F6FFDB,stroke:#6E8900,stroke-width:2px,color:#2E3900
+    classDef process fill:#E5F4FF,stroke:#006DDD,stroke-width:2px,color:#030710
 
     class A,F trigger
     class B,C,D,E process
@@ -242,9 +242,9 @@ graph LR
     C --> B
     B --> G[User response]
 
-    classDef trigger fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
-    classDef process fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A8A
-    classDef decision fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#78350F
+    classDef trigger fill:#F6FFDB,stroke:#6E8900,stroke-width:2px,color:#2E3900
+    classDef process fill:#E5F4FF,stroke:#006DDD,stroke-width:2px,color:#030710
+    classDef decision fill:#FDF3FF,stroke:#7E65AE,stroke-width:2px,color:#504B5F
 
     class A,G trigger
     class B,D,E,F process
@@ -270,12 +270,12 @@ from langchain.agents import create_agent
 
 # Sub-agents developed by different teams
 research_agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     prompt="You are a research specialist..."
 )
 
 writer_agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     prompt="You are a writing specialist..."
 )
 
@@ -306,7 +306,7 @@ def task(
 
 # Main coordinator agent
 main_agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[task],
     system_prompt=(
         "You coordinate specialized sub-agents. "
@@ -509,10 +509,10 @@ Because subagents are called inside tool functions, LangGraph cannot [statically
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/multi-agent/subagents.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/multi-agent/subagents.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

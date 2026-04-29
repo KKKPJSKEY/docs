@@ -6,7 +6,7 @@ description: Learn how to use subagents to delegate work and keep context clean
 import SubagentBasicPy from '/snippets/subagent-basic-py.mdx';
 import SubagentBasicJs from '/snippets/subagent-basic-js.mdx';
 
-Deep Agents can create subagents to delegate work. You can specify custom subagents in the `subagents` parameter. Subagents are useful for [context quarantine](https://www.dbreunig.com/2025/06/26/how-to-fix-your-context.html#context-quarantine) (keeping the main agent's context clean) and for providing specialized instructions.
+A deep agent can create subagents to delegate work. You can specify custom subagents in the `subagents` parameter. Subagents are useful for [context quarantine](https://www.dbreunig.com/2025/06/26/how-to-fix-your-context.html#context-quarantine) (keeping the main agent's context clean) and for providing specialized instructions.
 
 This page covers **synchronous** subagents, where the supervisor blocks until the subagent finishes. For long-running tasks, parallel workstreams, or cases where you need mid-flight steering and cancellation, see [Async subagents](/oss/python/deepagents/async-subagents).
 
@@ -44,6 +44,16 @@ Subagents solve the **context bloat problem**. When agents use tools with large 
 
 `subagents` should be a list of dictionaries or [`CompiledSubAgent`](https://reference.langchain.com/python/deepagents/middleware/subagents/CompiledSubAgent) objects. There are two types:
 
+### Default subagent
+
+Deep Agents automatically adds a synchronous `general-purpose` subagent unless you already provide a synchronous subagent with that name.
+
+- To replace it, pass your own subagent named `general-purpose`.
+- To rename or re-prompt the auto-added version, set `general_purpose_subagent=GeneralPurposeSubagentProfile(...)` on the active [harness profile](/oss/python/deepagents/profiles#harness-profiles).
+- To remove it entirely, set `general_purpose_subagent=GeneralPurposeSubagentProfile(enabled=False)` on the active harness profile.
+
+If no synchronous subagents remain after that, Deep Agents does not add the `task` tool. This behavior only affects synchronous subagents. Async subagents still use the async task tools described in [Async subagents](/oss/python/deepagents/async-subagents).
+
 ### SubAgent (Dictionary-based)
 
 For most use cases, define subagents as dictionaries matching the [`SubAgent`](https://reference.langchain.com/python/deepagents/middleware/subagents/SubAgent) spec with the following fields:
@@ -53,7 +63,7 @@ For most use cases, define subagents as dictionaries matching the [`SubAgent`](h
 | `name` | `str` | Required. Unique identifier for the subagent. The main agent uses this name when calling the `task()` tool. The subagent name becomes metadata for `AIMessage`s and for streaming, which helps to differentiate between agents. |
 | `description` | `str` | Required. Description of what this subagent does. Be specific and action-oriented. The main agent uses this to decide when to delegate. |
 | `system_prompt` | `str` | Required. Instructions for the subagent. Custom subagents must define their own. Include tool usage guidance and output format requirements.<br></br>Does not inherit from main agent. |
-| `tools` | `list[Callable]` | Required. Tools the subagent can use. Custom subagents specify their own. Keep this minimal and include only what's needed.<br></br>Does not inherit from main agent. |
+| `tools` | `list[Callable]` | Optional. Tools the subagent can use. Keep this minimal and include only what's needed.<br></br>Inherits from main agent by default. When specified, overrides the inherited tools entirely. |
 | `model` | `str` \| `BaseChatModel` | Optional. Overrides the main agent's model. Omit to use the main agent's model.<br></br>Inherits from main agent by default. You can pass either a model identifier string like `'openai:gpt-5.4'` (using the `'provider:model'` format) or a LangChain chat model object (`init_chat_model("gpt-5.4")` or `ChatOpenAI(model="gpt-5.4")`). |
 | `middleware` | `list[Middleware]` | Optional. Additional middleware for custom behavior, logging, or rate limiting.<br></br>Does not inherit from main agent. |
 | `interrupt_on` | `dict[str, bool]` | Optional. Configure [human-in-the-loop](/oss/python/deepagents/human-in-the-loop) for specific tools. Subagent value overrides main agent. Requires checkpointer.<br></br>Inherits from main agent by default. Subagent value overrides the default. |
@@ -68,6 +78,8 @@ For most use cases, define subagents as dictionaries matching the [`SubAgent`](h
 
 <Tip>
     **CLI users:** You can also define subagents as `AGENTS.md` files on disk instead of in code. The `name`, `description`, and `model` fields map to YAML frontmatter, and the markdown body becomes the `system_prompt`. See [Custom subagents](/oss/python/deepagents/cli/overview#subagents) for the file format.
+
+    **Deploy users:** Define subagents as directories under `subagents/` with their own `deepagents.toml` and `AGENTS.md`. The bundler auto-discovers them. See [Deploy subagents](/oss/python/deepagents/deploy#subagents) for the full configuration reference.
 </Tip>
 
 ### CompiledSubAgent
@@ -170,7 +182,7 @@ agent = create_deep_agent(
 )
 ```
 
-As you prompt your deepagents, all agent runs executed by a subagent or deep agent will have the agent name in their metadata.
+As you prompt your deep agent, all agent runs executed by a subagent or deep agent will have the agent name in their metadata.
 In this case the subagent with the name `"research-agent"`, will have `{'lc_agent_name': 'research-agent'}` in any associated agent run metadata:
 
 ![LangSmith Example trace showing the metadata](/oss/images/deepagents/deepagents-langsmith.png)
@@ -223,7 +235,7 @@ For full details on schema types and strategies (tool calling vs. provider-nativ
 
 ## The general-purpose subagent
 
-In addition to any user-defined subagents, Deep Agents have access to a `general-purpose` subagent at all times. This subagent:
+In addition to any user-defined subagents, every deep agent has access to a `general-purpose` subagent at all times. This subagent:
 
 - Has the same system prompt as the main agent
 - Has access to all the same tools
@@ -257,6 +269,8 @@ agent = create_deep_agent(
 
 
 When you provide a subagent with the general-purpose name, the default general-purpose subagent is not added. Your spec fully replaces it.
+
+To remove the built-in general-purpose subagent entirely instead of replacing it, set the active harness profile's general-purpose subagent `enabled` flag to `False`.
 
 ### When to use it
 
@@ -677,10 +691,10 @@ subagents = [
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/subagents.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/subagents.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

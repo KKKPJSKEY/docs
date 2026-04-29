@@ -335,7 +335,7 @@ loader = PyMuPDF4LLMLoader(
     mode="page",
     extract_images=True,
     images_parser=LLMImageBlobParser(
-        model=ChatOpenAI(model="gpt-4.1-mini", max_tokens=1024)
+        model=ChatOpenAI(model="gpt-5.4-mini", max_tokens=1024)
     ),
 )
 docs = loader.load()
@@ -402,10 +402,10 @@ For detailed documentation of all `PyMuPDF4LLMLoader` features and configuration
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/document_loaders/pymupdf4llm.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/document_loaders/pymupdf4llm.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

@@ -97,7 +97,7 @@ const stateExtensionMiddleware = createMiddleware({
 
 const checkpointer = new MemorySaver();
 const agent = createAgent({
-    model: "gpt-5",
+    model: "gpt-5.4",
     tools: [],
     middleware: [stateExtensionMiddleware],  // [!code highlight]
     checkpointer,
@@ -175,7 +175,7 @@ const trimMessages = createMiddleware({
 
 const checkpointer = new MemorySaver();
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   tools: [],
   middleware: [trimMessages],
   checkpointer,
@@ -243,7 +243,7 @@ const deleteOldMessages = createMiddleware({
 });
 
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   tools: [],
   systemPrompt: "Please be concise and to the point.",
   middleware: [deleteOldMessages],
@@ -307,11 +307,11 @@ import { MemorySaver } from "@langchain/langgraph";
 const checkpointer = new MemorySaver();
 
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   tools: [],
   middleware: [
     summarizationMiddleware({
-      model: "gpt-4.1-mini",
+      model: "gpt-5.4-mini",
       trigger: { tokens: 4000 },
       keep: { messages: 20 },
     }),
@@ -565,8 +565,8 @@ graph TD
     MODEL -.-> TOOLS
     MODEL -.-> END
     TOOLS --> PRE
-    classDef blueHighlight fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A;
-    classDef neutral fill:#F3F4F6,stroke:#9CA3AF,stroke-width:2px,color:#374151;
+    classDef blueHighlight fill:#E5F4FF,stroke:#006DDD,color:#030710;
+    classDef neutral fill:#F2FAFF,stroke:#40668D,stroke-width:2px,color:#2F4B68;
     class S blueHighlight;
     class END blueHighlight;
     class PRE,MODEL,TOOLS neutral;
@@ -629,9 +629,9 @@ graph TD
     POST -.-> END
     POST -.-> TOOLS
     TOOLS --> MODEL
-    classDef blueHighlight fill:#DBEAFE,stroke:#2563EB,color:#1E3A8A;
-    classDef greenHighlight fill:#DCFCE7,stroke:#16A34A,color:#14532D;
-    classDef neutral fill:#F3F4F6,stroke:#9CA3AF,stroke-width:2px,color:#374151;
+    classDef blueHighlight fill:#E5F4FF,stroke:#006DDD,color:#030710;
+    classDef greenHighlight fill:#F6FFDB,stroke:#6E8900,color:#2E3900;
+    classDef neutral fill:#F2FAFF,stroke:#40668D,stroke-width:2px,color:#2F4B68;
     class S blueHighlight;
     class END blueHighlight;
     class POST greenHighlight;
@@ -672,10 +672,10 @@ const agent = createAgent({
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/short-term-memory.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/short-term-memory.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

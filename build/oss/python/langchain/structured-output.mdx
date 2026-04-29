@@ -93,7 +93,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
         phone: str = Field(description="The phone number of the person")
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         response_format=ContactInfo  # Auto-selects ProviderStrategy
     )
 
@@ -118,7 +118,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
         phone: str # The phone number of the person
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ContactInfo  # Auto-selects ProviderStrategy
     )
@@ -143,7 +143,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
         phone: str # The phone number of the person
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ContactInfo  # Auto-selects ProviderStrategy
     )
@@ -172,7 +172,7 @@ LangChain automatically uses `ProviderStrategy` when you pass a schema type dire
     }
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ProviderStrategy(contact_info_schema)
     )
@@ -257,7 +257,7 @@ class ToolStrategy(Generic[SchemaT]):
         key_points: list[str] = Field(description="The key points of the review. Lowercase, 1-3 words each.")
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ToolStrategy(ProductReview)
     )
@@ -284,7 +284,7 @@ class ToolStrategy(Generic[SchemaT]):
         key_points: list[str]  # The key points of the review
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ToolStrategy(ProductReview)
     )
@@ -310,7 +310,7 @@ class ToolStrategy(Generic[SchemaT]):
         key_points: list[str]  # The key points of the review
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ToolStrategy(ProductReview)
     )
@@ -352,7 +352,7 @@ class ToolStrategy(Generic[SchemaT]):
     }
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ToolStrategy(product_review_schema)
     )
@@ -384,7 +384,7 @@ class ToolStrategy(Generic[SchemaT]):
         description: str = Field(description="Brief description of the complaint")
 
     agent = create_agent(
-        model="gpt-5",
+        model="gpt-5.4",
         tools=tools,
         response_format=ToolStrategy(Union[ProductReview, CustomerComplaint])
     )
@@ -415,7 +415,7 @@ class MeetingAction(BaseModel):
     priority: Literal["low", "medium", "high"] = Field(description="Priority level")
 
 agent = create_agent(
-    model="gpt-5",
+    model="gpt-5.4",
     tools=[],
     response_format=ToolStrategy(
         schema=MeetingAction,
@@ -480,7 +480,7 @@ class EventDetails(BaseModel):
     date: str = Field(description="Event date")
 
 agent = create_agent(
-    model="gpt-5",
+    model="gpt-5.4",
     tools=[],
     response_format=ToolStrategy(Union[ContactInfo, EventDetails])  # Default: handle_errors=True
 )
@@ -547,7 +547,7 @@ class ProductRating(BaseModel):
     comment: str = Field(description="Review comment")
 
 agent = create_agent(
-    model="gpt-5",
+    model="gpt-5.4",
     tools=[],
     response_format=ToolStrategy(ProductRating),  # Default: handle_errors=True
     system_prompt="You are a helpful assistant that parses product reviews. Do not make any field or value up."
@@ -645,7 +645,7 @@ def custom_error_handler(error: Exception) -> str:
 
 
 agent = create_agent(
-    model="gpt-5",
+    model="gpt-5.4",
     tools=[],
     response_format=ToolStrategy(
                         schema=Union[ContactInfo, EventDetails],
@@ -705,10 +705,10 @@ response_format = ToolStrategy(
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/structured-output.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/structured-output.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

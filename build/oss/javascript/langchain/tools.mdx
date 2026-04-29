@@ -8,6 +8,7 @@ import ToolReturnObjectPy from '/snippets/code-samples/tool-return-object-py.mdx
 import ToolReturnObjectJs from '/snippets/code-samples/tool-return-object-js.mdx';
 import ToolReturnCommandPy from '/snippets/code-samples/tool-return-command-py.mdx';
 import ToolReturnCommandJs from '/snippets/code-samples/tool-return-command-js.mdx';
+import ToolUpdateStatePy from '/snippets/code-samples/tool-update-state-py.mdx';
 
 Tools extend what [agents](/oss/javascript/langchain/agents) can do—letting them fetch real-time data, execute code, query external databases, and take actions in the world.
 
@@ -89,7 +90,7 @@ const contextSchema = z.object({
 });
 
 const agent = createAgent({
-  model: new ChatOpenAI({ model: "gpt-4.1" }),
+  model: new ChatOpenAI({ model: "gpt-5.4" }),
   tools: [getUserName],
   contextSchema,
 });
@@ -158,7 +159,7 @@ const saveUserInfo = tool(
 );
 
 const agent = createAgent({
-  model: new ChatOpenAI({ model: "gpt-4.1" }),
+  model: new ChatOpenAI({ model: "gpt-5.4" }),
   tools: [getUserInfo, saveUserInfo],
   store,
 });
@@ -470,10 +471,10 @@ Refer to the individual [chat model integration pages](/oss/javascript/integrati
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/tools.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/tools.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

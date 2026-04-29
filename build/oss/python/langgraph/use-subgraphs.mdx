@@ -385,13 +385,13 @@ def veggie_info(veggie_name: str) -> str:
 
 # Subagents - no checkpointer setting (inherits parent)
 fruit_agent = create_agent(
-    model="gpt-4.1-mini",
+    model="gpt-5.4-mini",
     tools=[fruit_info],
     prompt="You are a fruit expert. Use the fruit_info tool. Respond in one sentence.",
 )
 
 veggie_agent = create_agent(
-    model="gpt-4.1-mini",
+    model="gpt-5.4-mini",
     tools=[veggie_info],
     prompt="You are a veggie expert. Use the veggie_info tool. Respond in one sentence.",
 )
@@ -415,7 +415,7 @@ def ask_veggie_expert(question: str) -> str:
 
 # Outer agent with checkpointer
 agent = create_agent(
-    model="gpt-4.1-mini",
+    model="gpt-5.4-mini",
     tools=[ask_fruit_expert, ask_veggie_expert],
     prompt=(
         "You have two experts: ask_fruit_expert and ask_veggie_expert. "
@@ -521,7 +521,7 @@ def fruit_info(fruit_name: str) -> str:
 
 # Subagent with checkpointer=True for persistent state
 fruit_agent = create_agent(
-    model="gpt-4.1-mini",
+    model="gpt-5.4-mini",
     tools=[fruit_info],
     prompt="You are a fruit expert. Use the fruit_info tool. Respond in one sentence.",
     checkpointer=True,  # [!code highlight]
@@ -540,7 +540,7 @@ def ask_fruit_expert(question: str) -> str:
 # Use ToolCallLimitMiddleware to prevent parallel calls to per-thread subagents,
 # which would cause checkpoint conflicts.
 agent = create_agent(
-    model="gpt-4.1-mini",
+    model="gpt-5.4-mini",
     tools=[ask_fruit_expert],
     prompt="You have a fruit expert. ALWAYS delegate fruit questions to ask_fruit_expert.",
     middleware=[  # [!code highlight]
@@ -618,11 +618,11 @@ agent = create_agent(
       )
 
   fruit_agent = create_sub_agent(
-      "gpt-4.1-mini", name="fruit_agent",
+      "gpt-5.4-mini", name="fruit_agent",
       tools=[fruit_info], prompt="...", checkpointer=True,
   )
   veggie_agent = create_sub_agent(
-      "gpt-4.1-mini", name="veggie_agent",
+      "gpt-5.4-mini", name="veggie_agent",
       tools=[veggie_info], prompt="...", checkpointer=True,
   )
 
@@ -876,10 +876,10 @@ To include outputs from subgraphs in the streamed outputs, you can set the subgr
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/use-subgraphs.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/use-subgraphs.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

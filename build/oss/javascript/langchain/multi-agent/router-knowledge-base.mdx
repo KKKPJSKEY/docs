@@ -29,8 +29,8 @@ graph LR
     E --> F
     F --> G([Combined answer])
 
-    classDef trigger fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
-    classDef process fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A8A
+    classDef trigger fill:#F6FFDB,stroke:#6E8900,stroke-width:2px,color:#2E3900
+    classDef process fill:#E5F4FF,stroke:#006DDD,stroke-width:2px,color:#030710
 
     class A,G trigger
     class B,C,D,E,F process
@@ -260,7 +260,7 @@ Create an agent for each vertical. Each agent has domain-specific tools and a pr
 import { createAgent } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
 
-const llm = new ChatOpenAI({ model: "gpt-4.1" });
+const llm = new ChatOpenAI({ model: "gpt-5.4" });
 
 const githubAgent = createAgent({
   model: llm,
@@ -309,7 +309,7 @@ Now build the router workflow using a StateGraph. The workflow has four main ste
 import { StateGraph, START, END, Send } from "@langchain/langgraph";
 import { z } from "zod";
 
-const routerLlm = new ChatOpenAI({ model: "gpt-4.1-mini" });
+const routerLlm = new ChatOpenAI({ model: "gpt-5.4-mini" });
 
 
 // Define structured output schema for the classifier
@@ -674,7 +674,7 @@ const getThread = tool(
 import { createAgent } from "langchain";
 import { ChatOpenAI } from "@langchain/openai";
 
-const llm = new ChatOpenAI({ model: "gpt-4.1" });
+const llm = new ChatOpenAI({ model: "gpt-5.4" });
 
 const githubAgent = createAgent({
   model: llm,
@@ -706,7 +706,7 @@ shared knowledge and solutions.
   `.trim(),
 });
 
-const routerLlm = new ChatOpenAI({ model: "gpt-4.1-mini" });
+const routerLlm = new ChatOpenAI({ model: "gpt-5.4-mini" });
 
 // Define structured output schema for the classifier
 const ClassificationResultSchema = z.object({
@@ -954,10 +954,10 @@ For simpler cases with dynamic tool selection, consider the [subagents pattern](
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/multi-agent/router-knowledge-base.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/multi-agent/router-knowledge-base.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

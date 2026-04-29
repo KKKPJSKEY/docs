@@ -221,7 +221,7 @@ const structuredOutputMiddleware = createMiddleware({
 });
 
 export const agent = createAgent({
-  model: process.env.COPILOTKIT_MODEL ?? "anthropic:claude-haiku-4-5",
+  model: process.env.COPILOTKIT_MODEL ?? "google_genai:gemini-3.1-pro-preview",
   contextSchema,
   middleware: [structuredOutputMiddleware],
   tools: [searchWebTool, deepSearchTool],
@@ -456,10 +456,10 @@ This renderer pattern is what makes the integration feel native:
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/frontend/integrations/copilotkit.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/frontend/integrations/copilotkit.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

@@ -19,8 +19,8 @@ graph LR
     B --> E[Skill C]
     B --> A
 
-    classDef trigger fill:#DCFCE7,stroke:#16A34A,stroke-width:2px,color:#14532D
-    classDef process fill:#DBEAFE,stroke:#2563EB,stroke-width:2px,color:#1E3A8A
+    classDef trigger fill:#F6FFDB,stroke:#6E8900,stroke-width:2px,color:#2E3900
+    classDef process fill:#E5F4FF,stroke:#006DDD,stroke-width:2px,color:#030710
 
     class A trigger
     class B,C,D,E process
@@ -58,7 +58,7 @@ def load_skill(skill_name: str) -> str:
     ...
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[load_skill],
     system_prompt=(
         "You are a helpful assistant. "
@@ -97,10 +97,10 @@ This also follows the progressive disclosure pattern and limits the information 
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/multi-agent/skills.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/multi-agent/skills.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

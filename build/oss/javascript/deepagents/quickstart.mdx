@@ -14,13 +14,13 @@ This guide walks you through creating your first deep agent with planning, file 
 
 ## Prerequisites
 
-Before you begin, make sure you have an API key from a model provider (e.g., Anthropic, OpenAI).
+Before you begin, make sure you have an API key from a model provider (e.g., Gemini, Anthropic, OpenAI).
 
 <Note>
     Deep Agents require a model that supports [tool calling](/oss/javascript/langchain/models#tool-calling). See [customization](/oss/javascript/deepagents/customization#model) for how to configure your model.
 </Note>
 
-### Step 1: Install dependencies
+## Step 1: Install dependencies
 
 
 
@@ -43,7 +43,7 @@ Before you begin, make sure you have an API key from a model provider (e.g., Ant
     This guide uses [Tavily](https://tavily.com/) as an example search provider, but you can substitute any search API (e.g., DuckDuckGo, SerpAPI, Brave Search).
 </Note>
 
-### Step 2: Set up your API keys
+## Step 2: Set up your API keys
 
 <Tabs>
     <Tab title="Google">
@@ -101,7 +101,7 @@ Before you begin, make sure you have an API key from a model provider (e.g., Ant
     </Tab>
 </Tabs>
 
-### Step 3: Create a search tool
+## Step 3: Create a search tool
 
 
 
@@ -156,7 +156,7 @@ const internetSearch = tool(
 ```
 
 
-### Step 4: Create a deep agent
+## Step 4: Create a deep agent
 
 
 
@@ -267,7 +267,7 @@ Pick a model from your provider. By default, `createDeepAgent` uses `claude-sonn
 </Tabs>
 
 
-### Step 5: Run the agent
+## Step 5: Run the agent
 
 
 
@@ -311,10 +311,10 @@ Now that you've built your first deep agent:
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/quickstart.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/deepagents/quickstart.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

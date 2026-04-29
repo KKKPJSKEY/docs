@@ -321,7 +321,7 @@ const callCounterMiddleware = createMiddleware({
 });
 
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   tools: [...],
   middleware: [callCounterMiddleware],
 });
@@ -412,7 +412,7 @@ const userContextMiddleware = createMiddleware({
 });
 
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   middleware: [userContextMiddleware],
   tools: [],
   contextSchema,
@@ -449,7 +449,7 @@ When using multiple middleware, understand how they execute:
 
 ```typescript
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   middleware: [middleware1, middleware2, middleware3],
   tools: [...],
 });
@@ -507,7 +507,7 @@ To exit early from middleware, return a dictionary with `jump_to`:
 import { createAgent, createMiddleware, AIMessage } from "langchain";
 
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   middleware: [
     createMiddleware({
       name: "BlockedContentMiddleware",
@@ -600,7 +600,7 @@ const toolSelectorMiddleware = createMiddleware({
 });
 
 const agent = createAgent({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   tools: allTools,
   middleware: [toolSelectorMiddleware],
 });
@@ -728,7 +728,7 @@ const myOtherMiddleware = createMiddleware({
 });
 
 const agent = createAgent({
-  model: "anthropic:claude-3-5-sonnet",
+  model: "google_genai:gemini-3.1-pro-preview",
   systemPrompt: "You are a helpful assistant.",
   middleware: [myMiddleware, myOtherMiddleware],
 });
@@ -763,10 +763,10 @@ Use [`SystemMessage.concat`](https://reference.langchain.com/javascript/langchai
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/middleware/custom.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/middleware/custom.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

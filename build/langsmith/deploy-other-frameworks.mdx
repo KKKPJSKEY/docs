@@ -79,7 +79,7 @@ If you're [self-hosting LangSmith](/langsmith/self-hosted), replace the  `OTEL_E
 </Note>
 
 <Note>
-Strand's OTel tracing contains synchronous code. In this case, you may need to set `BG_JOB_ISOLATED_LOOPS=true` to execute background runs in an isolated event loop separate from the serving API event loop.
+Strand's OTel tracing contains synchronous code. In this case, you may need to set `BG_JOB_ISOLATED_LOOPS=true` to execute background runs in an isolated event loop separate from the serving API event loop. This only prevents health-check failures; the synchronous tracing code still degrades throughput and tail latency under load. See [`BG_JOB_ISOLATED_LOOPS`](/langsmith/env-var#bg_job_isolated_loops) for recommended async alternatives.
 </Note>
 
 In your main agent, set up the following:
@@ -108,10 +108,10 @@ To deploy your agent, follow the [Deploy to cloud](/langsmith/deploy-to-cloud) g
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/deploy-other-frameworks.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/deploy-other-frameworks.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

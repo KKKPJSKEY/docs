@@ -81,13 +81,13 @@ class Configuration(BaseModel):
             "anthropic/claude-sonnet-4-6",
             "anthropic/claude-haiku-4-5-20251001",
             "openai/o1",
-            "openai/gpt-4.1-mini",
+            "openai/gpt-5.4-mini",
             "openai/o1-mini",
             "openai/o3-mini",
         ],
         {"__template_metadata__": {"kind": "llm"}},
     ] = Field(
-        default="openai/gpt-4.1-mini",
+        default="openai/gpt-5.4-mini",
         description="The name of the language model to use for the agent's main interactions. "
         "Should be in the form: provider/model-name.",
         json_schema_extra={"langgraph_nodes": ["call_model"]},
@@ -224,10 +224,10 @@ For more details, refer to [How to evaluate an application's intermediate steps]
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/observability-studio.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/langsmith/observability-studio.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

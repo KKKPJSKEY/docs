@@ -398,7 +398,7 @@ const getWeather = tool(
   },
 );
 
-const model = new ChatOpenAI({ model: "gpt-4.1" });
+const model = new ChatOpenAI({ model: "gpt-5.4" });
 const modelWithTools = model.bindTools([getWeather]);  // [!code highlight]
 
 const response = await modelWithTools.invoke("What's the weather like in Boston?");
@@ -890,7 +890,7 @@ If a model invokes a tool server-side, the content of the response message will 
 ```typescript
 import { initChatModel } from "langchain";
 
-const model = await initChatModel("gpt-4.1-mini");
+const model = await initChatModel("gpt-5.4-mini");
 const modelWithTools = model.bindTools([{ type: "web_search" }])
 
 const message = await modelWithTools.invoke("What was a positive news story from today?");
@@ -948,7 +948,7 @@ Certain models can be configured to return token-level log probabilities represe
 
 ```typescript
 const model = new ChatOpenAI({
-    model: "gpt-4.1",
+    model: "gpt-5.4",
     logprobs: true,
 });
 
@@ -1032,10 +1032,10 @@ These configuration values are particularly useful when:
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/models.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/models.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

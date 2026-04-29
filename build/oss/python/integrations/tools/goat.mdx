@@ -135,7 +135,7 @@ keypair = Keypair.from_base58_string(os.getenv("SOLANA_WALLET_SEED") or "")
 wallet = solana(client, keypair)
 
 # Initialize LLM
-llm = ChatOpenAI(model="gpt-4.1-mini")
+llm = ChatOpenAI(model="gpt-5.4-mini")
 
 def main():
     # Initialize tools with Solana wallet
@@ -167,10 +167,10 @@ if __name__ == "__main__":
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/tools/goat.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/tools/goat.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

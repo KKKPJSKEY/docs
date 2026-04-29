@@ -155,7 +155,7 @@ const getWeather = tool(
 );
 
 const agent = createAgent({
-    model: "gpt-4.1-mini",
+    model: "gpt-5.4-mini",
     tools: [getWeather],
 });
 
@@ -198,7 +198,7 @@ const getWeather = tool(
 );
 
 const agent = createAgent({
-    model: "gpt-4.1-mini",
+    model: "gpt-5.4-mini",
     tools: [getWeather],
 });
 
@@ -251,7 +251,7 @@ const getWeather = tool(
 );
 
 const agent = createAgent({
-    model: "gpt-4.1-mini",
+    model: "gpt-5.4-mini",
     tools: [getWeather],
 });
 
@@ -317,7 +317,7 @@ Set `streaming: false` when initializing the model.
 import { ChatOpenAI } from "@langchain/openai";
 
 const model = new ChatOpenAI({
-  model: "gpt-4.1",
+  model: "gpt-5.4",
   streaming: false,  // [!code highlight]
 });
 ```
@@ -350,10 +350,10 @@ See the [LangGraph streaming guide](/oss/javascript/langgraph/streaming#disable-
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/streaming.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/streaming.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

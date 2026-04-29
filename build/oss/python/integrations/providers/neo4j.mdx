@@ -67,7 +67,7 @@ with Neo4jSaver.from_conn_string(
     checkpointer.setup()  # Create indexes (run once)
     # Create agent with checkpointer
     agent = create_agent(
-        model="anthropic:claude-sonnet-4-6",
+        model="google_genai:gemini-3.1-pro-preview",
         tools=[get_weather],
         system_prompt="You are a helpful assistant",
         checkpointer=checkpointer
@@ -77,10 +77,10 @@ with Neo4jSaver.from_conn_string(
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/providers/neo4j.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/providers/neo4j.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

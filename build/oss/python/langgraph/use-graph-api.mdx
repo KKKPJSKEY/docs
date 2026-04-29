@@ -690,7 +690,7 @@ print(graph.invoke({}, context={"my_runtime_value": "b"}))  # [!code highlight]
 
   MODELS = {
       "anthropic": init_chat_model("claude-haiku-4-5-20251001"),
-      "openai": init_chat_model("gpt-4.1-mini"),
+      "openai": init_chat_model("gpt-5.4-mini"),
   }
 
   def call_model(state: MessagesState, runtime: Runtime[ContextSchema]):
@@ -718,7 +718,7 @@ print(graph.invoke({}, context={"my_runtime_value": "b"}))  # [!code highlight]
 
   ```
   claude-haiku-4-5-20251001
-  gpt-4.1-mini-2025-04-14
+  gpt-5.4-mini
   ```
 
 
@@ -743,7 +743,7 @@ print(graph.invoke({}, context={"my_runtime_value": "b"}))  # [!code highlight]
 
   MODELS = {
       "anthropic": init_chat_model("claude-haiku-4-5-20251001"),
-      "openai": init_chat_model("gpt-4.1-mini"),
+      "openai": init_chat_model("gpt-5.4-mini"),
   }
 
   def call_model(state: MessagesState, runtime: Runtime[ContextSchema]):
@@ -1557,8 +1557,7 @@ graph = builder.compile()
 
 
 
-To control the recursion limit, specify `"recursionLimit"` in the config. This will raise a `GraphRecursionError`, which you can catch and handle:
-
+To control the recursion limit, specify `"recursion_limit"` in the config. This will raise a `GraphRecursionError`, which you can catch and handle:
 ```python
 from langgraph.errors import GraphRecursionError
 
@@ -2241,10 +2240,10 @@ except ImportError:
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/use-graph-api.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langgraph/use-graph-api.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

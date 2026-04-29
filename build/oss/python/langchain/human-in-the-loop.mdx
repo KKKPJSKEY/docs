@@ -41,15 +41,14 @@ from langgraph.checkpoint.memory import InMemorySaver # [!code highlight]
 
 
 agent = create_agent(
-    model="gpt-4.1",
-    tools=[write_file_tool, execute_sql_tool, read_data_tool],
+    model="gpt-5.4",
+    tools=[write_file, execute_sql, read_data],
     middleware=[
         HumanInTheLoopMiddleware( # [!code highlight]
             interrupt_on={
                 "write_file": True,  # All decisions (approve, edit, reject) allowed
                 "execute_sql": {"allowed_decisions": ["approve", "reject"]},  # No editing allowed
-                # Safe operation, no approval needed
-                "read_data": False,
+                "read_data": False, # Safe operation, no approval needed
             },
             # Prefix for interrupt messages - combined with tool name and args to form the full message
             # e.g., "Tool execution pending approval: execute_sql with query='DELETE FROM...'"
@@ -355,10 +354,10 @@ Review the [execution lifecycle](#execution-lifecycle) above to understand how t
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/human-in-the-loop.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/human-in-the-loop.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

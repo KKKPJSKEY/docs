@@ -45,7 +45,7 @@ import getpass
 if "PREMAI_API_KEY" not in os.environ:
     os.environ["PREMAI_API_KEY"] = getpass.getpass("PremAI API Key:")
 
-chat = ChatPremAI(project_id=1234, model_name="gpt-4.1")
+chat = ChatPremAI(project_id=1234, model_name="gpt-5.4")
 ```
 
 ### Chat completions
@@ -437,10 +437,10 @@ Now, as done above, we parse this and run this functions and call the LLM once a
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/providers/premai.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/python/integrations/providers/premai.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>

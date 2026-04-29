@@ -46,11 +46,11 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import SummarizationMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[your_weather_tool, your_calculator_tool],
     middleware=[
         SummarizationMiddleware(
-            model="gpt-4.1-mini",
+            model="gpt-5.4-mini",
             trigger=("tokens", 4000),
             keep=("messages", 20),
         ),
@@ -73,12 +73,12 @@ agent = create_agent(
         "max_input_tokens": 100_000,
         # ...
     }
-    model = init_chat_model("gpt-4.1", profile=custom_profile)
+    model = init_chat_model("gpt-5.4", profile=custom_profile)
     ```
 </Tip>
 
 <ParamField body="model" type="string | BaseChatModel" required>
-    Model for generating summaries. Can be a model identifier string (e.g., `'openai:gpt-4.1-mini'`) or a `BaseChatModel` instance. See [`init_chat_model`](https://reference.langchain.com/python/langchain/chat_models/base/init_chat_model) for more information.
+    Model for generating summaries. Can be a model identifier string (e.g., `'openai:gpt-5.4-mini'`) or a `BaseChatModel` instance. See [`init_chat_model`](https://reference.langchain.com/python/langchain/chat_models/base/init_chat_model) for more information.
 </ParamField>
 
 <ParamField body="trigger" type="ContextSize | list[ContextSize] | None">
@@ -158,11 +158,11 @@ from langchain.agents.middleware import SummarizationMiddleware
 
 # Single condition: trigger if tokens >= 4000
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[your_weather_tool, your_calculator_tool],
     middleware=[
         SummarizationMiddleware(
-            model="gpt-4.1-mini",
+            model="gpt-5.4-mini",
             trigger=("tokens", 4000),
             keep=("messages", 20),
         ),
@@ -171,11 +171,11 @@ agent = create_agent(
 
 # Multiple conditions: trigger if number of tokens >= 3000 OR messages >= 6
 agent2 = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[your_weather_tool, your_calculator_tool],
     middleware=[
         SummarizationMiddleware(
-            model="gpt-4.1-mini",
+            model="gpt-5.4-mini",
             trigger=[
                 ("tokens", 3000),
                 ("messages", 6),
@@ -187,11 +187,11 @@ agent2 = create_agent(
 
 # Using fractional limits
 agent3 = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[your_weather_tool, your_calculator_tool],
     middleware=[
         SummarizationMiddleware(
-            model="gpt-4.1-mini",
+            model="gpt-5.4-mini",
             trigger=("fraction", 0.8),
             keep=("fraction", 0.3),
         ),
@@ -234,7 +234,7 @@ def your_send_email_tool(recipient: str, subject: str, body: str) -> str:
     return f"Email sent to {recipient} with subject '{subject}'"
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[your_read_email_tool, your_send_email_tool],
     checkpointer=InMemorySaver(),
     middleware=[
@@ -280,7 +280,7 @@ from langchain.agents.middleware import ModelCallLimitMiddleware
 from langgraph.checkpoint.memory import InMemorySaver
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     checkpointer=InMemorySaver(),  # Required for thread limiting
     tools=[],
     middleware=[
@@ -339,7 +339,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import ToolCallLimitMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool, database_tool],
     middleware=[
         # Global limit
@@ -415,7 +415,7 @@ database_limiter = ToolCallLimitMiddleware(tool_name="query_database", thread_li
 strict_limiter = ToolCallLimitMiddleware(tool_name="scrape_webpage", run_limit=2, exit_behavior="error")
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool, database_tool, scraper_tool],
     middleware=[global_limiter, search_limiter, database_limiter, strict_limiter],
 )
@@ -442,11 +442,11 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import ModelFallbackMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         ModelFallbackMiddleware(
-            "gpt-4.1-mini",
+            "gpt-5.4-mini",
             "claude-3-5-sonnet-20241022",
         ),
     ],
@@ -464,7 +464,7 @@ agent = create_agent(
 <Accordion title="Configuration options">
 
 <ParamField body="first_model" type="string | BaseChatModel" required>
-    First fallback model to try when the primary model fails. Can be a model identifier string (e.g., `'openai:gpt-4.1-mini'`) or a `BaseChatModel` instance.
+    First fallback model to try when the primary model fails. Can be a model identifier string (e.g., `'openai:gpt-5.4-mini'`) or a `BaseChatModel` instance.
 </ParamField>
 
 <ParamField body="*additional_models" type="string | BaseChatModel">
@@ -491,7 +491,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import PIIMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         PIIMiddleware("email", strategy="redact", apply_to_input=True),
@@ -521,7 +521,7 @@ import re
 
 # Method 1: Regex pattern string
 agent1 = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         PIIMiddleware(
@@ -534,7 +534,7 @@ agent1 = create_agent(
 
 # Method 2: Compiled regex pattern
 agent2 = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         PIIMiddleware(
@@ -567,7 +567,7 @@ def detect_ssn(content: str) -> list[dict[str, str | int]]:
     return matches
 
 agent3 = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         PIIMiddleware(
@@ -660,7 +660,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import TodoListMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[read_file, write_file, run_tests],
     middleware=[TodoListMiddleware()],
 )
@@ -708,11 +708,11 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import LLMToolSelectorMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[tool1, tool2, tool3, tool4, tool5, ...],
     middleware=[
         LLMToolSelectorMiddleware(
-            model="gpt-4.1-mini",
+            model="gpt-5.4-mini",
             max_tools=3,
             always_include=["search"],
         ),
@@ -726,7 +726,7 @@ agent = create_agent(
 <Accordion title="Configuration options">
 
 <ParamField body="model" type="string | BaseChatModel">
-    Model for tool selection. Can be a model identifier string (e.g., `'openai:gpt-4.1-mini'`) or a `BaseChatModel` instance. See [`init_chat_model`](https://reference.langchain.com/python/langchain/chat_models/base/init_chat_model) for more information.
+    Model for tool selection. Can be a model identifier string (e.g., `'openai:gpt-5.4-mini'`) or a `BaseChatModel` instance. See [`init_chat_model`](https://reference.langchain.com/python/langchain/chat_models/base/init_chat_model) for more information.
 
     Defaults to the agent's main model.
 </ParamField>
@@ -764,7 +764,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import ToolRetryMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool, database_tool],
     middleware=[
         ToolRetryMiddleware(
@@ -845,7 +845,7 @@ from langchain.agents.middleware import ToolRetryMiddleware
 
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool, database_tool, api_tool],
     middleware=[
         ToolRetryMiddleware(
@@ -882,7 +882,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import ModelRetryMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool, database_tool],
     middleware=[
         ModelRetryMiddleware(
@@ -946,7 +946,7 @@ from langchain.agents.middleware import ModelRetryMiddleware
 
 # Basic usage with default settings (2 retries, exponential backoff)
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool],
     middleware=[ModelRetryMiddleware()],
 )
@@ -1031,7 +1031,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import LLMToolEmulator
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[get_weather, search_database, send_email],
     middleware=[
         LLMToolEmulator(),  # Emulate all tools
@@ -1049,7 +1049,7 @@ agent = create_agent(
 </ParamField>
 
 <ParamField body="model" type="string | BaseChatModel">
-    Model to use for generating emulated tool responses. Can be a model identifier string (e.g., `'anthropic:claude-sonnet-4-6'`) or a `BaseChatModel` instance. Defaults to the agent's model if not specified. See [`init_chat_model`](https://reference.langchain.com/python/langchain/chat_models/base/init_chat_model) for more information.
+    Model to use for generating emulated tool responses. Can be a model identifier string (e.g., `'google_genai:gemini-3.1-pro-preview'`) or a `BaseChatModel` instance. Defaults to the agent's model if not specified. See [`init_chat_model`](https://reference.langchain.com/python/langchain/chat_models/base/init_chat_model) for more information.
 </ParamField>
 
 
@@ -1080,21 +1080,21 @@ def send_email(to: str, subject: str, body: str) -> str:
 
 # Emulate all tools (default behavior)
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[get_weather, send_email],
     middleware=[LLMToolEmulator()],
 )
 
 # Emulate specific tools only
 agent2 = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[get_weather, send_email],
     middleware=[LLMToolEmulator(tools=["get_weather"])],
 )
 
 # Use custom model for emulation
 agent4 = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[get_weather, send_email],
     middleware=[LLMToolEmulator(model="claude-sonnet-4-6")],
 )
@@ -1120,7 +1120,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import ContextEditingMiddleware, ClearToolUsesEdit
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         ContextEditingMiddleware(
@@ -1195,7 +1195,7 @@ from langchain.agents.middleware import ContextEditingMiddleware, ClearToolUsesE
 
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool, your_calculator_tool, database_tool],
     middleware=[
         ContextEditingMiddleware(
@@ -1245,7 +1245,7 @@ from langchain.agents.middleware import (
 )
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool],
     middleware=[
         ShellToolMiddleware(
@@ -1320,7 +1320,7 @@ from langchain.agents.middleware import (
 
 # Basic shell tool with host execution
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[search_tool],
     middleware=[
         ShellToolMiddleware(
@@ -1332,7 +1332,7 @@ agent = create_agent(
 
 # Docker isolation with startup commands
 agent_docker = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         ShellToolMiddleware(
@@ -1348,7 +1348,7 @@ agent_docker = create_agent(
 
 # With output redaction (applied post execution)
 agent_redacted = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         ShellToolMiddleware(
@@ -1379,7 +1379,7 @@ from langchain.agents import create_agent
 from langchain.agents.middleware import FilesystemFileSearchMiddleware
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         FilesystemFileSearchMiddleware(
@@ -1426,7 +1426,7 @@ from langchain.messages import HumanMessage
 
 
 agent = create_agent(
-    model="gpt-4.1",
+    model="gpt-5.4",
     tools=[],
     middleware=[
         FilesystemFileSearchMiddleware(
@@ -1549,7 +1549,7 @@ agent = create_agent(
                     "description": "This subagent can get weather in cities.",
                     "system_prompt": "Use the get_weather tool to get the weather in a city.",
                     "tools": [get_weather],
-                    "model": "gpt-4.1",
+                    "model": "gpt-5.4",
                     "middleware": [],
                 }
             ],
@@ -1626,10 +1626,10 @@ These middleware are optimized for specific LLM providers. See each provider's d
 ---
 
 <div className="source-links">
-<Callout icon="edit">
-    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/middleware/built-in.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
-</Callout>
 <Callout icon="terminal-2">
     [Connect these docs](/use-these-docs) to Claude, VSCode, and more via MCP for real-time answers.
+</Callout>
+<Callout icon="edit">
+    [Edit this page on GitHub](https://github.com/langchain-ai/docs/edit/main/src/oss/langchain/middleware/built-in.mdx) or [file an issue](https://github.com/langchain-ai/docs/issues/new/choose).
 </Callout>
 </div>
